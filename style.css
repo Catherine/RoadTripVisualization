@@ -77,5 +77,11 @@ h2{
 .canvas .state{
 	fill: none;
 	stroke:#fff;
-	stroke-width:1px;
+	//stroke-width:1px;
 }
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+

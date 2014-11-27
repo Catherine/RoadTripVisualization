@@ -2,13 +2,8 @@ var margin = {t:50,l:50,b:50,r:50},
     width = $('.canvas').width()-margin.l-margin.r,
     height = $('.canvas').height()-margin.t-margin.b;
 
-var svg = d3.select('.canvas')
-    .append('svg')
-    .attr('width',width+margin.l+margin.r)
-    .attr('height',height+margin.t+margin.b)
-    .append('g')
-    .attr('transform',"translate("+margin.l+","+margin.t+")");
 
+/* ----- Setting up D3 Projection, Path, and Zoom ----- */
 var projection = d3.geo.albersUsa()
     .translate([width/2, height/2]);
     //.scale(180);
@@ -16,7 +11,30 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
     .projection(projection);
 
-//import data
+var zoom = d3.behavior.zoom()
+    .translate([0, 0])
+    .scale(1)
+    //.scaleExtent([1, 8])
+    .on("zoom", zoomed);
+
+
+/* ----- Setting up svg and canvas -----*/
+var svg = d3.select('.canvas')
+    .append('svg')
+    .attr('width',width+margin.l+margin.r)
+    .attr('height',height+margin.t+margin.b)
+    .attr('transform',"translate("+margin.l+","+margin.t+")");
+
+var features = svg.append('g');
+
+svg.append("rect")
+    .attr("class", "overlay")
+    .attr("width", width)
+    .attr("height", height)
+    .call(zoom);
+
+
+/* ----- Importing data ----- */
 queue()
     .defer(d3.json, "data/gz_2010_us_050_00_5m.json")
     .defer(d3.json, "data/gz_2010_us_040_00_5m.json")
@@ -33,7 +51,7 @@ queue()
 //convert google kml location data (renamed to .xml file) to json
 function parseKml(next){
     $.ajax({
-        url: "data/history-06-27-2014.xml",
+        url: "data/history-06-27-2014_edited_days.xml",
         dataType:"xml"
     }).done(function(xmlData){
         //xml to json converter by stsvilik -- https://github.com/stsvilik/Xml-to-JSON
@@ -63,11 +81,9 @@ function formatData(data){
     return dataArray;
 }
 
-
 //draw the world, country, and airpoint points on the canvas
 function draw(counties, states){
-
-    var states = svg.selectAll('.state')
+    var states = features.selectAll('.state')
         .data(states.features, function(d){
             return d.properties.STATE;
     });
@@ -76,14 +92,14 @@ function draw(counties, states){
         .enter()
         .append('path')
         .attr('class','state')
-        .attr('d',path);
+        .attr('d',path)
+        .style("stroke-width", "1.5px");
 }
 
 function drawPoints(places){
-
     console.log(places)
 
-    var points = svg.selectAll('point')
+    var points = features.selectAll('point')
         .data(places)
         .enter()
         .append('circle')
@@ -92,9 +108,23 @@ function drawPoints(places){
            var proj = projection([d.where[0], d.where[1]]);
            return 'translate('+proj[0]+','+proj[1]+')'
         })
-        .attr('r', '1')
+        .attr('r', '2px')
         .attr('fill', 'red');
-
-
-
 }
+
+
+function zoomed() {
+  features.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+  
+  features.selectAll('.state')
+    .style("stroke-width", 1.5 / d3.event.scale + "px");
+
+  features.selectAll(".point")
+    .attr('r', 2 / d3.event.scale + "px");
+}
+
+d3.select(self.frameElement).style("height", height + "px");
+
+
+
+
