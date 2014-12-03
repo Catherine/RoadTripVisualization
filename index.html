@@ -3,26 +3,74 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Road Trip 2014</title>
-		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'> -->
+		
+		<link href='http://fonts.googleapis.com/css?family=Questrial|Old+Standard+TT' rel='stylesheet' type='text/css'>
+
+		<link href="bootstrap\css\bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link href="css/stylesheet.css" rel="stylesheet"/>
+
+		<link rel="stylesheet" type="text/css" href="assets/ModalWindowEffects/css/component.css">
 	</head>
 	<body>
-		<div class="container">
-			<div class="canvas">
-				<div class="tooltip">
-					<h2></h2>
-					<span></span>
+	<header>
+		<h2 id="project-title">Road Trip 2014</h2>
+		<nav class="nav">
+			<ul>
+				<li><a href="https://catherinepatchell.wordpress.com/artg5330/" id="journal" class="btn btn-default" target="_blank">Research Journal</a></li>
+				<li><a href="#" id="about" class="btn btn-default md-trigger" data-modal="modal-1">About</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="canvas">
+	</div><!--.canvas-->
+	<div class="controls">
+		<div class="control-group">
+			<span>Grouped Buttons</span>
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-default">Plot</button>
+				<button type="button" class="btn btn-default">Scroll to Draw</button>
+			</div>
+		</div><!--.control-group-->
+		<!-- <div class="control-group">
+			<span>Multi-select</span>
+			<div class="btn-group dropup">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropup <span class="caret"></span></button>
+				  <ul class="dropdown-menu" role="menu">
+    				<li><a href="#">Action</a></li>
+    				<li><a href="#">Another action</a></li>
+    				<li class="divider"></li>
+    				<li><a href="#">Separated link</a></li>
+  				</ul>
+			</div>
+		</div> --><!--.control-group-->
+	</div><!--.controls-->
+
+
+	<div class="md-modal md-effect-2" id="modal-1">
+			<div class="md-content">
+				<h3>About</h3>
+				<div>
+					<h4>About the Project</h4>
+					<p>This summer I drove from San Diego, California across the country to my hometown in Maine.  Through Google's location tracking, I was able to take the .kml file they provided, parse and plot the route we travelled.</p>
+					<h4>About Me</h4>
+					<p>I'm currently a candidate for a dual BS in Computer Science and Interactive Media with a minor in Psychology at Northeastern University. My interests in computing are in web and interface development, and recently I became very interested in data visualization.</p>
+					<button class="md-close">Close</button>
 				</div>
 			</div>
-		</div><!--.container-->
+		</div>
 
 		<!-- Scripts -->
 		<script src="script/lib/jquery/jquery-1.11.1.min.js"></script>
 		<script src="script/d3/d3.min.js" charset="utf-8"></script>
 		<script src="script/lib/queue/queue.min.js"></script>
         <script src="script/lib/topojson/topojson.v1.min.js"></script>
+        <script src="bootstrap\js\bootstrap.min.js"></script>
         
         <script src="script/xml.min.js"></script>
 		<script src="script/script.js"></script>
+
+		<script src="assets/ModalWindowEffects/js/classie.js"></script>
+		<script src="assets/ModalWindowEffects/js/modalEffects.js"></script>
 	</body>
 </html>

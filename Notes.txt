@@ -1,0 +1,33 @@
+
+Styling:
+Stripped Bootstrap: a bit heavy, and wanted to be more lightweight
+Implemented own font choices
+
+
+Implementation:
+
+D3 Zoom functionality
+	- Zoom would cause the image to jump to origin once zoom function was initiated
+	  by the user. Had to make sure that zoomed image was translated the same as the
+	  start image had been
+
+Parsed kml file to create JSON file.
+	- Removed (manually) location data for my home and for my friend's home 
+	- Combined data from both friend's google data and my own to create a better
+	  data collection from road trip
+
+
+Added an about modal to talk about what the project is and my background
+	- Using CSS modals -- not the bootstrap ones
+
+
+
+
+TO DO:
+
+Scroll to Draw
+
+Color-code days for static plot
+	- create a key for the days
+	- larger circles for longer time in a location?? -- in the future
+

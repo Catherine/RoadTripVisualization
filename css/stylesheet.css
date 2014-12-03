@@ -1,45 +1,42 @@
-html,body,h1,h2,h3,h4,p,div,ul,li,svg{
-	margin:0;
-	padding:0;
-	font-size:100%;
+h1, h2, h3, h4, button, .btn {
+	font-family: 'Questrial', sans-serif;
+	color: #eee;
 }
 
-/*------------Structure-------------*/
-html,body{
-	height: 100%;
-	position: relative;
-	background: rgb(50,50,50);
-	color:#fff;
+
+p,div,ul,li,svg{
+
 }
-.container{
-	width:1200px;
-	margin:auto;
+
+.control-group span{
+	font-family: 'Old Standard TT', serif;
 }
-.container .canvas{
+
+#project-title{
+	font-weight: 400;
+	margin-top: 18px;
+	border: 1px solid #fff;
+	text-transform: uppercase;
+	font-size: 20px;
+	letter-spacing: 6px;
 	position: absolute;
-	width:100%;
-	height: 800px;
-	top: 0;
-	position: relative;
-}
-.container .control{
-	height:40px;
-	margin:auto;
+	padding: 10px 20px;
 }
 
-/*------------font-------------*/
-body{
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 16px;
+.btn{
+	border-radius: 0px;
+	background-color: #3A506B;
 }
-h1{
-	font-size: 1.8em;
-	margin: 30px 0 10px;
-	text-align:center;
+
+.btn-group button{
+	border: 2px solid #323232;
 }
-h2{
-	font-size:1.3em;
-	margin: 0 0 20px;
+
+.btn-group button:hover{
+	border: 2px solid #eee;
+	background-color: #3A506B;
+	color: rgb(238, 238, 238);
+	opacity: .8;
 }
 
 /*------------tooltip-------------*/
@@ -52,31 +49,20 @@ h2{
 	opacity:0;
 }
 
-/*-----------control--------------*/
-.control .button{
-    color:#fff;
-    background: rgb(100,100,100);
-    text-align:center;
-
-    height:40px;
-    width:150px;
-    float:left;
-    line-height:40px;
-}
-.control .button:hover{
-    background: rgb(70,70,70);
-}
-
 /*------------svg-----------------*/
 .canvas .county{
-	fill:rgb(50,50,50);
-	stroke:#fff;
-	stroke-width:.5px;
+	fill: rgb(50,50,50);
+	stroke: #fff;
+	stroke-width: .5px;
 }
 
 .canvas .state{
-	fill: none;
-	stroke:#fff;
+	/*fill: none;
+	stroke:#fff;*/
+	fill: #ccc;
+	stroke: #323232;
+	/*fill: #52D1DC;
+	stroke: #323232;*/
 	//stroke-width:1px;
 }
 

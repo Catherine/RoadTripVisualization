@@ -1,0 +1,95 @@
+/*Include this after the bootstrap CSS to override*/
+html,body,h1,h2,h3,h4,p,div,ul,li,svg{
+	margin:0;
+	padding:0;
+	font-size:100%;
+	list-style:none;
+}
+
+/*------------Structure-------------*/
+html,body{
+	height: 100%;
+	position: relative;
+	background: rgb(220,220,220);
+}
+header{
+	position:absolute;
+	height:80px;
+	width:100%;
+	background:rgb(210,210,210);
+	z-index:999;
+	padding:0 100px;
+}
+.canvas{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+.controls{
+	width: 100%;
+	height: 80px;
+	position:absolute;
+	background: rgb(210,210,210);
+	bottom:0;
+	padding:0 100px;
+}
+
+/*------------global-----------*/
+.btn{
+	/*override bootstrap styles for buttons*/
+	border:none;
+	color:#fff;
+	background:rgb(50,50,50);
+}
+
+/*------------font-------------*/
+body{
+	font-family:"Crimson Text", serif;
+	font-size: 16px;
+	color:rgb(100,100,100);
+}
+h1,h2,h3,h4,nav,.btn{
+	font-family:"Open Sans Condensed", sans-serif;
+	font-weight:bold;
+}
+h1{
+	font-size: 2em;
+	margin: 20px 0 10px;
+	color:rgb(50,50,50);
+}
+h2{
+	font-size:1.5em;
+	margin: 0 0 20px;
+}
+h3{
+    font-size: 0.8em;
+}
+
+/*----------nav bar------------*/
+header .nav{
+	position:absolute;
+	right:100px;
+	top:0;
+	line-height:80px;
+}
+header .nav li{
+	float:right;
+	padding: 0 5px;
+}
+
+/*----------control bar------------*/
+.controls{
+	line-height:80px;
+}
+.controls .control-group{
+	position:relative;
+	display:inline;
+	padding: 0 30px 0;
+}
+.controls .control-group:first-child{
+	padding: 0 30px 0 0;
+}
+.controls .control-group span{
+	vertical-align: middle;
+	margin: 0 5px 0 0;
+}

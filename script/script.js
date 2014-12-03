@@ -5,14 +5,14 @@ var margin = {t:50,l:50,b:50,r:50},
 
 /* ----- Setting up D3 Projection, Path, and Zoom ----- */
 var projection = d3.geo.albersUsa()
-    .translate([width/2, height/2]);
-    //.scale(180);
+    .translate([width/2, height/2])//;
+    .scale(1400);
 
 var path = d3.geo.path()
     .projection(projection);
 
 var zoom = d3.behavior.zoom()
-    .translate([0, 0])
+    .translate([margin.l, margin.t])
     .scale(1)
     //.scaleExtent([1, 8])
     .on("zoom", zoomed);
@@ -25,7 +25,8 @@ var svg = d3.select('.canvas')
     .attr('height',height+margin.t+margin.b)
     .attr('transform',"translate("+margin.l+","+margin.t+")");
 
-var features = svg.append('g');
+var features = svg.append('g')
+    .attr('transform',"translate("+margin.l+","+margin.t+")");
 
 svg.append("rect")
     .attr("class", "overlay")
@@ -93,7 +94,7 @@ function draw(counties, states){
         .append('path')
         .attr('class','state')
         .attr('d',path)
-        .style("stroke-width", "1.5px");
+        .style("stroke-width", "2px");
 }
 
 function drawPoints(places){
@@ -109,7 +110,7 @@ function drawPoints(places){
            return 'translate('+proj[0]+','+proj[1]+')'
         })
         .attr('r', '2px')
-        .attr('fill', 'red');
+        .attr('fill', '#690500');
 }
 
 
