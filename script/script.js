@@ -17,6 +17,15 @@ var zoom = d3.behavior.zoom()
     //.scaleExtent([1, 8])
     .on("zoom", zoomed);
 
+var lineGen = d3.svg.line()
+    .x(function(d){ 
+        var proj = projection([d.where[0], d.where[1]]);
+        return proj[0]; })
+    .y(function(d){ r
+        var proj = projection([d.where[0], d.where[1]]);
+        return proj[1]; })
+    .interpolate('linear');
+
 
 /* ----- Setting up svg and canvas -----*/
 var svg = d3.select('.canvas')
@@ -110,7 +119,8 @@ function drawPoints(places){
            return 'translate('+proj[0]+','+proj[1]+')'
         })
         .attr('r', '2px')
-        .attr('fill', '#690500');
+        .attr('fill', '#690500')
+        .attr('d',lineGen);
 }
 
 

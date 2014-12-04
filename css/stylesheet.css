@@ -71,3 +71,8 @@ p,div,ul,li,svg{
   pointer-events: all;
 }
 
+.canvas .line{
+	fill: none;
+	stroke-width: 1px;
+	stroke: rgb(50,50,50);
+}
