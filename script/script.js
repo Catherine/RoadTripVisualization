@@ -120,7 +120,9 @@ function drawPoints(places){
         })
         .attr('r', '2px')
         .attr('fill', '#690500')
-        .attr('d',lineGen);
+        .attr('d',function(d){
+            return lineGen(d);
+        });
 }
 
 
