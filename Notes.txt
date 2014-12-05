@@ -31,3 +31,9 @@ Color-code days for static plot
 	- create a key for the days
 	- larger circles for longer time in a location?? -- in the future
 
+Tooltips for showing date/time
+
+
+
+
+d3.timeformat.multi()

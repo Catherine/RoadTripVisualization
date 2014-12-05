@@ -32,11 +32,12 @@ p,div,ul,li,svg{
 	border: 2px solid #323232;
 }
 
-.btn-group button:hover{
+.btn-group button:hover, .btn-group button:focus{
 	border: 2px solid #eee;
 	background-color: #3A506B;
 	color: rgb(238, 238, 238);
 	opacity: .8;
+	outline: none;
 }
 
 /*------------tooltip-------------*/
@@ -57,10 +58,10 @@ p,div,ul,li,svg{
 }
 
 .canvas .state{
-	/*fill: none;
-	stroke:#fff;*/
-	fill: #ccc;
-	stroke: #323232;
+	fill: none;
+	stroke:#fff;
+	/*fill: #ccc;
+	stroke: #323232;*/
 	/*fill: #52D1DC;
 	stroke: #323232;*/
 	//stroke-width:1px;

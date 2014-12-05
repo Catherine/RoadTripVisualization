@@ -2,6 +2,11 @@ var margin = {t:50,l:50,b:50,r:50},
     width = $('.canvas').width()-margin.l-margin.r,
     height = $('.canvas').height()-margin.t-margin.b;
 
+var dotColor = '#992A31';
+var dotColorSet = true;
+var week = ["Jun 28", "Jun 29", "Jun 30", "Jul 01", "Jul 02", "Jul 03", "Jul 04", "Jul 05", "Jul 06", "Jul 07", "Jul 08"];
+var colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'black', 'brown', 'white', '#323232', '#28ea39'];
+
 
 /* ----- Setting up D3 Projection, Path, and Zoom ----- */
 var projection = d3.geo.albersUsa()
@@ -17,14 +22,7 @@ var zoom = d3.behavior.zoom()
     //.scaleExtent([1, 8])
     .on("zoom", zoomed);
 
-var lineGen = d3.svg.line()
-    .x(function(d){ 
-        var proj = projection([d.where[0], d.where[1]]);
-        return proj[0]; })
-    .y(function(d){ r
-        var proj = projection([d.where[0], d.where[1]]);
-        return proj[1]; })
-    .interpolate('linear');
+var colorRange = d3.scale.linear().domain([0,0.15]).range(["#fff","red"]);
 
 
 /* ----- Setting up svg and canvas -----*/
@@ -56,6 +54,20 @@ queue()
 
         //draw location points once data is finished loading
         parseKml(function(places) { drawPoints(places); });
+
+        //set up click events
+        $('#plot').on('click', function(e){
+            dotColorSet = true;
+            drawPoints(places);
+         });
+     
+        $('#plot_color').on('click', function(e){
+            dotColorSet = false;
+            console.log("clicked plot_color and dotColorSet=" + dotColorSet);
+            drawPoints(places);
+        });
+
+        
 	})
 
 //convert google kml location data (renamed to .xml file) to json
@@ -118,11 +130,32 @@ function drawPoints(places){
            var proj = projection([d.where[0], d.where[1]]);
            return 'translate('+proj[0]+','+proj[1]+')'
         })
+        .transition()
         .attr('r', '2px')
-        .attr('fill', '#690500')
-        .attr('d',function(d){
-            return lineGen(d);
-        });
+        .attr('fill', function(d){
+            if (dotColorSet){
+                return dotColor;
+            } else 
+            return colorize(d);
+        })
+        // .style('fill',function(d){
+        //    var rate = d.when;
+        //    return scaleColor(rate);
+        // })
+        ;
+}
+
+function colorize(d){
+    console.log('hit colorize');
+    var date = d.when;
+
+    for(var x = 0; x < week.length; x++){
+        if (date.indexOf(week[x]) > -1){
+            console.log("found date " + date + " in " + week[x])
+            return colorArray[x];
+        }
+    }
+    
 }
 
 
