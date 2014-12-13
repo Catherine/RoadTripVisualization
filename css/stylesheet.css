@@ -1,3 +1,7 @@
+body{
+	background-color: #5BC0BE;
+}
+
 h1, h2, h3, h4, button, .btn {
 	font-family: 'Questrial', sans-serif;
 	color: #eee;
@@ -52,16 +56,17 @@ p,div,ul,li,svg{
 
 /*------------svg-----------------*/
 .canvas .county{
-	fill: rgb(50,50,50);
-	stroke: #fff;
+	//fill: rgb(50,50,50);
+	stroke: white;
 	stroke-width: .5px;
 }
 
 .canvas .state{
-	fill: none;
-	stroke:#fff;
-	/*fill: #ccc;
-	stroke: #323232;*/
+	/*fill: none;
+	stroke:#fff;*/
+	fill: #000;
+	opacity: .5;
+	stroke: #5BC0BE;
 	/*fill: #52D1DC;
 	stroke: #323232;*/
 	//stroke-width:1px;
